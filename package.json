@@ -1,0 +1,28 @@
+{
+  "name": "virtual-card",
+  "version": "0.0.1",
+  "description": "Create your own virtual greeting cards",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-register",
+    "test:watch": "npm test -- --watch"
+  },
+  "keywords": [
+    "card",
+    "holiday",
+    "react"
+  ],
+  "author": "Jasper Degens",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-register": "^6.3.13",
+    "chai": "^3.4.1",
+    "chai-shallow-deep-equal": "^1.3.0",
+    "mocha": "^2.3.4"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
