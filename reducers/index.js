@@ -3,6 +3,7 @@
 import * as actions from '../actions/index';
 import {combineReducers} from 'redux';
 
+/* Reducer that handles changes to cover images */
 function coverImages(state = [], action){
   switch (action.type) {
     case actions.ADD_COVER_IMAGE:
@@ -26,8 +27,36 @@ function coverImages(state = [], action){
   }
 }
 
+/* Reducer that handles changes in style for various components */
+function styles(state = {}, action){
+  if (action.type === actions.CHANGE_STYLE) {
+    //update component styles
+    var updatedComponentStyles = Object.assign({},
+                              state[action.component],
+                              action.styles);
+    //update state with updated component styles
+    var updatedComponent = {};
+    updatedComponent[action.component] = updatedComponentStyles;
+    return Object.assign({}, 
+                        state, 
+                        updatedComponent);
+  }
+  return state;
+}
+
+function letterText(state = {}, action){
+  if (action.type === actions.CHANGE_LETTER_TEXT) {
+    var newSection = {};
+    newSection[action.section] = action.text;
+    return Object.assign({}, state, newSection);
+  }
+  return state;
+}
+
 const virtualCardReducer = combineReducers({
-  coverImages
+  coverImages,
+  styles,
+  letterText
 });
 
 export default virtualCardReducer;
