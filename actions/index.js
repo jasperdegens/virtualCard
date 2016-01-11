@@ -24,6 +24,6 @@ export function changeStyle(component, styles){
 
 // makes more sense to already have section + value be dict?
 export function changeLetterText(section, value){
-  return {type: CHANGE_LETTER_TEXT, value: {section: value}};
+  return {type: CHANGE_LETTER_TEXT, section: section, value: value};
 }
 
