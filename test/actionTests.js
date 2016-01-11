@@ -1,7 +1,8 @@
 /* Tests for Redux Actions */
 
 import * as actions from '../actions/index';
-import virtualCardReducer from '../reducers/index'
+import virtualCardReducer from '../reducers/index';
+import store from '../store/index';
 import chai, {expect} from 'chai';
 
 const image = 'http://cdn.shopclues.net/images/detailed/14103/paintings2_1427095927.jpg';
@@ -116,4 +117,16 @@ describe('Letter Text reducer tests', () => {
     expect(newState.letterText).to.deep.equal({body: 'aaa', cover: 'ccc'});
   });
 
+});
+
+describe('Testing store as a whole', () => {
+  it('Should initialize as an empty store', () => {
+    expect(store.getState()).to.deep.equal({coverImages: [], 
+                                            styles: {},
+                                            letterText: {}});
+  });
+  it('Should correctly dispatch and update store', () => {
+    store.dispatch(actions.changeLetterText('body', 'ccc'));
+    expect(store.getState().letterText).to.deep.equal({'body': 'ccc'});
+  })
 })
