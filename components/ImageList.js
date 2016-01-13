@@ -27,4 +27,8 @@ ImageList.propTypes = {
   images: PropTypes.array
 };
 
+ImageList.defaultProps = {
+  images: []
+};
+
 module.exports = ImageList;

@@ -30,4 +30,4 @@ describe('Image List Tests', () => {
     var imageDetailItems = TestUtils.scryRenderedComponentsWithType(imageList, ImageDetails);
     expect(imageDetailItems.length).toEqual(2);
   });
-})
+});

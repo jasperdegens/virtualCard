@@ -23,6 +23,7 @@ class ImageDetails extends Component {
         <p>{this.props.description}</p>
         <img className="preview" src={this.props.imageURI} />
         <div className="toggle-open" onClick={this.toggleOpen.bind(this)}>+</div>
+        <button className="delete" onClick={this.props.handleDelete}>remove</button>
       </div>
     );
   }
