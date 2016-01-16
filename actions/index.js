@@ -9,8 +9,8 @@ export const CHANGE_STYLE = 'CHANGE_STYLE';
 export const CHANGE_LETTER_TEXT = 'CHANGE_LETTER_TEXT';
 
 /* action creators */
-export function addCoverImage(imageURI, description){
-  return {type: ADD_COVER_IMAGE, image: imageURI, description: description};
+export function addCoverImage(title, description, imageURI){
+  return {type: ADD_COVER_IMAGE, title: title, description: description, image: imageURI};
 }
 
 export function removeCoverImage(index){

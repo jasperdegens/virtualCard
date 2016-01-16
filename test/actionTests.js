@@ -7,6 +7,7 @@ import chai, {expect} from 'chai';
 
 const image = 'http://cdn.shopclues.net/images/detailed/14103/paintings2_1427095927.jpg';
 const descr = 'Woman in Rain'; 
+const title = 't';
 
 describe('redux actions', () => {
   
@@ -14,9 +15,10 @@ describe('redux actions', () => {
     const expectedAction = {
       type : actions.ADD_COVER_IMAGE,
       image: image,
+      title: title,
       description: descr
     };
-    expect(actions.addCoverImage(image, descr)).to.deep.equal(expectedAction);
+    expect(actions.addCoverImage(title, descr, image)).to.deep.equal(expectedAction);
   });
 
   it('Should create a changeLetterText action', () => {
@@ -36,7 +38,7 @@ describe('redux actions', () => {
 describe('Cover image reducer tests', () => {
   it('Should create a new state with one image, and original state stay empty', () => {
     const initialState = {coverImages: []};
-    const addImageActionCreator = actions.addCoverImage(image, descr);
+    const addImageActionCreator = actions.addCoverImage(title, image, descr);
     const newState = virtualCardReducer(initialState, addImageActionCreator);
     expect(newState.coverImages.length).to.equal(1);
     expect(initialState.coverImages.length).to.equal(0);
@@ -45,7 +47,7 @@ describe('Cover image reducer tests', () => {
   (function testRemoveFunctionality(){
     var sampleData = [];
     for(var i = 0; i < 4; i ++){
-      sampleData.push({image: 'a'+i, description: 'example ' + i});
+      sampleData.push({title: 't'+i, image: 'a'+i, description: 'example ' + i});
     }
     const initialState = {coverImages : sampleData};
     const removeImageCreator = actions.removeCoverImage(2);
@@ -57,8 +59,8 @@ describe('Cover image reducer tests', () => {
       expect(initialState.coverImages.length).to.equal(4); 
     })
     it('Should ensure correct image removed', () => {
-      expect(newState.coverImages).to.deep.contain({image:'a1', description: 'example 1'});
-      expect(newState.coverImages).to.not.deep.contain({image:'a2', description: 'example 2'});
+      expect(newState.coverImages).to.deep.contain({title: 't1', image:'a1', description: 'example 1'});
+      expect(newState.coverImages).to.not.deep.contain({title: 't2', image:'a2', description: 'example 2'});
     });
   })();
 });

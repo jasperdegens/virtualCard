@@ -1,6 +1,7 @@
 /* Options Menu Component */
 
 import React from 'react';
+import ImagesContainer from './ImagesContainer';
 
 class OptionsMenu extends React.Component {
   constructor(props) {
@@ -10,21 +11,25 @@ class OptionsMenu extends React.Component {
   }
 
   handleTextNodeChange(e){
-    var data = {};
-    data[e.target.name] = e.target.value;
-    this.props.onTextChange(data);
+    this.props.onChangeText(e.target.name, e.target.value);
   }
 
   render() {
     var letterSections = ['salutation', 'body', 'signature'].map((letterSection) => {
             return (
-              <textarea name={letterSection} key={letterSection}
+              <div key={letterSection}>
+                <p>{letterSection} text</p>
+                <textarea name={letterSection}
                     onChange={this.handleTextNodeChange} />
+              </div>
             );
           });
 
     return (
       <div className="options">
+        <ImagesContainer images={this.props.images}
+          onAddImage={this.props.onAddImage}
+          onRemoveImage={this.props.onRemoveImage}/>
         <div className="card-inside">
           {letterSections}
         </div>
@@ -34,11 +39,15 @@ class OptionsMenu extends React.Component {
 }
 
 OptionsMenu.propTypes = {
-  onTextChange : React.PropTypes.func
+  images: React.PropTypes.array,
+  onChangeText : React.PropTypes.func,
+  onAddImage : React.PropTypes.func,
+  onRemoveImage : React.PropTypes.func
 };
 
 OptionsMenu.defaultProps = {
-  onTextChange : function(d){return {};}
+  onAddImage: function(d){return {};},
+  onChangeText : function(d){return {};}
 }
 
 module.exports = OptionsMenu;

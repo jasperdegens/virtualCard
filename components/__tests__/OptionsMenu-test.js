@@ -21,12 +21,11 @@ describe('Options Menu Tests', () => {
 
   it('should create correct action for textarea update', () => {
     var textData = {};
-    var handleTextChange = function(data){
-      console.log("sdfhajklsdfhlaskjdf");
-      textData = data;
+    var handleTextChange = function(section, text){
+      textData[section] = text;
     };
     var menu = TestUtils.renderIntoDocument(<OptionsMenu 
-                            onTextChange={handleTextChange} />);
+                            onChangeText={handleTextChange} />);
     var textInputs = TestUtils.scryRenderedDOMComponentsWithTag(menu, 'textarea');
     var salutation = textInputs[0];
     expect(salutation.name).toEqual('salutation');

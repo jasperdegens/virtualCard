@@ -1,6 +1,7 @@
 /* Image Details Component */
 
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames';
 
 class ImageDetails extends Component {
   constructor(props){
@@ -17,8 +18,11 @@ class ImageDetails extends Component {
   }
 
   render(){
+    var containerClasses = classNames('image-details', 
+                            {'open' : this.state.isOpen});
+
     return (
-      <div className="image-details">
+      <div className={containerClasses}>
         <h2>{this.props.title}</h2>
         <p>{this.props.description}</p>
         <img className="preview" src={this.props.imageURI} />

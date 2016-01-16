@@ -10,7 +10,8 @@ function coverImages(state = [], action){
       return [
         ...state,
         {
-          image: action.image,
+          title: action.title,
+          imageURI: action.image,
           description: action.description
         }
       ];

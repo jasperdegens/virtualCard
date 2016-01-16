@@ -9,19 +9,20 @@ class ImagesContainer extends Component {
   }
 
   handleSubmit(e){
-    this.props.onAddImage({
-      title: this.refs.title.value,
-      description: this.refs.description.value,
-      imageURI: this.refs.imageURI.value
-    });
+    e.preventDefault();
+    this.props.onAddImage(this.refs.title.value,
+                          this.refs.description.value,
+                          this.refs.imageURI.value
+    );
   }
 
   render(){
     return (
       <div className="images-container">
-        <ImageList />
+        <h2>Current Images</h2>
+        <ImageList images={this.props.images} onRemoveImage={this.props.onRemoveImage}/>
         <form className="new-image-form" onSubmit={this.handleSubmit.bind(this)}>
-          <input type="text" name="title" ref="title" />
+          <input type="text" ref="title" />
           <input type="text" ref="description" />
           <input type="text" ref="imageURI" />
           <button type="submit" value="submit">Add Image</button>
@@ -32,6 +33,7 @@ class ImagesContainer extends Component {
 }
 
 ImagesContainer.propTypes = {
+  images: PropTypes.array,
   onAddImage : PropTypes.func
 };
 

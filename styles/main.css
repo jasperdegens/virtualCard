@@ -1,0 +1,42 @@
+/* global styles */
+html, body{
+  margin: 0;
+}
+
+.options{
+  padding: 20px;
+  background-color: #444;
+  color: white;
+  position: absolute;
+  right: 0;
+  max-width: 275px;
+}
+
+/* image list styles */
+
+.image-details{
+  overflow: hidden;
+  max-height: 30px;
+  transition: all 1s ease;
+  position: relative;
+}
+
+.image-details.open{
+  max-height: 150px;
+}
+
+.image-details h2{
+  margin: 0;
+}
+
+.image-details .toggle-open{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.image-details .toggle-open:hover{
+  cursor: pointer;
+  font-weight: bold;
+}
+

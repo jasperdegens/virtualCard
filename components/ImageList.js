@@ -9,8 +9,12 @@ class ImageList extends Component {
   }
 
   render(){
+    var self = this;
     var imageItems = this.props.images.map((data, index) => {
       return (<ImageDetails {...data}
+                handleDelete={function(){
+                  self.props.onRemoveImage(index);
+                }}
                 key={index} />
       );
     });
@@ -24,7 +28,8 @@ class ImageList extends Component {
 }
 
 ImageList.propTypes = {
-  images: PropTypes.array
+  images: PropTypes.array,
+  onRemoveImage: PropTypes.func
 };
 
 ImageList.defaultProps = {
