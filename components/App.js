@@ -3,6 +3,7 @@
 import React, {Component} from 'react';
 import OptionsMenu from './OptionsMenu';
 import {connect} from 'react-redux';
+import Card from './Card';
 
 //import redux actions
 import {addCoverImage, changeLetterText, removeCoverImage} from '../actions';
@@ -15,6 +16,8 @@ class App extends Component{
     const {dispatch, images, letterText} = this.props;
     return (
       <div className='app'>
+        <Card images={images}
+              letterText={letterText} />
         <OptionsMenu
           images={images}
           onAddImage={(title, description, imageURI) => {
@@ -26,7 +29,6 @@ class App extends Component{
           onChangeText={(section, text) => {
             dispatch(changeLetterText(section, text));
           }} />
-        <p>{letterText.salutation}</p>
       </div>
     );
   }

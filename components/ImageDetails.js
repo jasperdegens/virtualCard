@@ -2,6 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
+import Accordian from './Accordian';
 
 class ImageDetails extends Component {
   constructor(props){
@@ -22,13 +23,14 @@ class ImageDetails extends Component {
                             {'open' : this.state.isOpen});
 
     return (
-      <div className={containerClasses}>
-        <h2>{this.props.title}</h2>
-        <p>{this.props.description}</p>
-        <img className="preview" src={this.props.imageURI} />
-        <div className="toggle-open" onClick={this.toggleOpen.bind(this)}>+</div>
-        <button className="delete" onClick={this.props.handleDelete}>remove</button>
-      </div>
+      <Accordian title={this.props.title}
+                 className="image-details-wrapper">
+        <div className="image-details">
+          <p>{this.props.description}</p>
+          <img className="preview" src={this.props.imageURI} />
+          <button className="delete gray-button" onClick={this.props.handleDelete}>remove</button>
+        </div>
+      </Accordian>
     );
   }
 

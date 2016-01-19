@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ImagesContainer from './ImagesContainer';
+import Accordian from './Accordian';
 
 class OptionsMenu extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class OptionsMenu extends React.Component {
   render() {
     var letterSections = ['salutation', 'body', 'signature'].map((letterSection) => {
             return (
-              <div key={letterSection}>
+              <div key={letterSection} className="letter-section">
                 <p>{letterSection} text</p>
                 <textarea name={letterSection}
                     onChange={this.handleTextNodeChange} />
@@ -30,9 +31,12 @@ class OptionsMenu extends React.Component {
         <ImagesContainer images={this.props.images}
           onAddImage={this.props.onAddImage}
           onRemoveImage={this.props.onRemoveImage}/>
-        <div className="card-inside">
+        <Accordian className="card-inside-options"
+                   headerClass="inside-text-header"
+                   title="Letter Text"
+                   isOpen={true}>
           {letterSections}
-        </div>
+        </Accordian>
       </div>
     );
   }
