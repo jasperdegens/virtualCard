@@ -3,16 +3,27 @@
 import React from 'react';
 import ImagesContainer from './ImagesContainer';
 import Accordian from './Accordian';
+import classNames from 'classnames';
 
 class OptionsMenu extends React.Component {
   constructor(props) {
     super(props);
     this.displayName = 'OptionsMenu';
     this.handleTextNodeChange = this.handleTextNodeChange.bind(this);
+    this.handleToggleOpen = this.handleToggleOpen.bind(this);
+    this.state= {
+      isOpen : true
+    };
   }
 
   handleTextNodeChange(e){
     this.props.onChangeText(e.target.name, e.target.value);
+  }
+
+  handleToggleOpen(e){
+    this.setState({
+      isOpen : !this.state.isOpen
+    });
   }
 
   render() {
@@ -27,16 +38,19 @@ class OptionsMenu extends React.Component {
           });
 
     return (
-      <div className="options">
-        <ImagesContainer images={this.props.images}
-          onAddImage={this.props.onAddImage}
-          onRemoveImage={this.props.onRemoveImage}/>
-        <Accordian className="card-inside-options"
-                   headerClass="inside-text-header"
-                   title="Letter Text"
-                   isOpen={true}>
-          {letterSections}
-        </Accordian>
+      <div className={classNames("options-wrapper", {'open' : this.state.isOpen})}>
+        <div className="options">
+          <ImagesContainer images={this.props.images}
+            onAddImage={this.props.onAddImage}
+            onRemoveImage={this.props.onRemoveImage}/>
+          <Accordian className="card-inside-options"
+                     headerClass="inside-text-header"
+                     title="Letter Text"
+                     isOpen={true}>
+            {letterSections}
+          </Accordian>
+        </div>
+        <div className="toggle-options" onClick={this.handleToggleOpen} />
       </div>
     );
   }

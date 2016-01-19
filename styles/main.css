@@ -120,6 +120,7 @@ body{
   bottom: -115px;
   text-align: center;
   font-size: 30px;
+  font-family: 'Cardo', sans-serif;
 }
 
 .card-panel{
@@ -211,6 +212,8 @@ body{
 
 .signature{
   margin: 0;
+  font-size: 14px;
+  font-family: 'Cardo', sans-serif;
 }
 
 .letter-body{
@@ -223,17 +226,79 @@ body{
 
 /* Options Menu Stule */
 
-.options{
+.options-wrapper{
   padding: 20px;
   background-color: #444;
   color: white;
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: -295px;
   top: 0;
-  max-width: 275px;
-  overflow: scroll;
+  width: 255px;
+  z-index: 99;
+  transition: all .5s ease-in-out;
+}
+
+.options{
   overflow-y: scroll;
   max-height: 90vh;
+}
+
+.options-wrapper.open{
+  right: 0px;
+}
+
+.toggle-options{
+  width: 2em;
+  height: 3em;
+  position: absolute;
+  top: 20px;
+  left: -2em;
+  border-radius: 20px 0 0 20px;
+  background-color: #444;
+  cursor: pointer;
+  border-top: 2px solid rgba(238, 238, 238, 0.18);
+  border-left: 2px solid rgba(238, 238, 238, 0.18);
+  border-bottom: 2px solid rgba(238, 238, 238, 0.18);
+}
+
+.toggle-options:before {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 12px;
+  width: 4px;
+  border-radius: .3em;
+  background: #eee;
+  transform-origin: -2px;
+  top: 50%;
+  left: 50%;
+  transition: all .5s ease-in-out;
+  transform: translate(0%, -100%) rotate(45deg);
+}
+.toggle-options:after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 12px;
+  width: 4px;
+  border-radius: .3em;
+  background: #eee;
+  transform-origin: -2px;
+  top: 50%;
+  left: 50%;
+  transition: all .5s ease-in-out;
+  transform: translate(0%, 0%) rotate(-45deg);
+}
+
+/*.options-wrapper.open .toggle-options:before, .accordian.open .toggle:after {
+  height: 14px;
+}
+*/
+.options-wrapper.open .toggle-options:before {
+  transform: translate(100%, -50%) rotate(45deg);
+}
+.options-wrapper.open .toggle-options:after {
+  transform: translate(100%, -50%) rotate(-45deg);
 }
 
 .letter-section{
