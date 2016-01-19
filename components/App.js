@@ -8,6 +8,10 @@ import Card from './Card';
 //import redux actions
 import {addCoverImage, changeLetterText, removeCoverImage} from '../actions';
 
+var exampleState = {
+
+}
+
 class App extends Component{
   constructor(props){
     super(props);
@@ -19,6 +23,7 @@ class App extends Component{
         <Card images={images}
               letterText={letterText} />
         <OptionsMenu
+          letterText={letterText}
           images={images}
           onAddImage={(title, description, imageURI) => {
             dispatch(addCoverImage(title, description, imageURI));

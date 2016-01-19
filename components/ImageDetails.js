@@ -24,7 +24,8 @@ class ImageDetails extends Component {
 
     return (
       <Accordian title={this.props.title}
-                 className="image-details-wrapper">
+                 className="image-details-wrapper"
+                 headerClass="image-details-header">
         <div className="image-details">
           <p>{this.props.description}</p>
           <img className="preview" src={this.props.imageURI} />

@@ -15,6 +15,12 @@ class OptionsMenu extends React.Component {
       isOpen : true
     };
   }
+  componentDidMount(){
+    //initiall set contents of textareas
+    for (var section in this.props.letterText) {
+      this.refs[section].value = this.props.letterText[section];
+    }
+  }
 
   handleTextNodeChange(e){
     this.props.onChangeText(e.target.name, e.target.value);
@@ -31,7 +37,7 @@ class OptionsMenu extends React.Component {
             return (
               <div key={letterSection} className="letter-section">
                 <p>{letterSection} text</p>
-                <textarea name={letterSection}
+                <textarea name={letterSection} ref={letterSection}
                     onChange={this.handleTextNodeChange} />
               </div>
             );
