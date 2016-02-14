@@ -12,7 +12,7 @@ require('../styles/main.css');
 
 //import devTools
 // TODO: remove before prod
-import DevTools from '../containers/DevTools';
+// import DevTools from '../containers/DevTools';
 
 //init store
 var exampleState = {
@@ -37,7 +37,6 @@ render(
   <Provider store={store}>
     <div>
       <App />
-      <DevTools />
     </div>
   </Provider>,
   rootElement

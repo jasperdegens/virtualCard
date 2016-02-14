@@ -5,7 +5,7 @@ import {createStore, compose} from 'redux';
 import DevTools from '../containers/DevTools';
 
 const finalCreateStore = compose(
-  DevTools.instrument()
+  // DevTools.instrument()
 )(createStore);
 
 

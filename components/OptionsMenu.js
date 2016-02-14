@@ -66,7 +66,8 @@ OptionsMenu.propTypes = {
   images: React.PropTypes.array,
   onChangeText : React.PropTypes.func,
   onAddImage : React.PropTypes.func,
-  onRemoveImage : React.PropTypes.func
+  onRemoveImage : React.PropTypes.func,
+  letterText : React.PropTypes.object
 };
 
 OptionsMenu.defaultProps = {
